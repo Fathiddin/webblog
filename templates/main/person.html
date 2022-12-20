@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container mt-3">
+        <h3>Person {% if request.path == '/create/' %}Create{% else %}Update{% endif %} Form</h3>
+        <br>
+        {% load crispy_forms_tags %}
+        <form action="" method="POST" class="w-50" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{form|crispy}}
+            <button class="btn btn-primary my-3" type="submit">
+                {% if request.path == '/create/' %}Add{% else %}Update{% endif %}
+            </button>
+        </form>
+    </div>
+{% endblock %}
